@@ -1,6 +1,8 @@
 
 public class Sorting {
-
+	
+	//==============================================================================================
+	
 	/**
 	 * This method performs a mergeSort on an unsorted array. The algorithm runs in O(n*log(n)).
 	 * @param array - Unsorted array to be sorted
@@ -16,6 +18,7 @@ public class Sorting {
 			merge(array, indexLeft, indexMiddle, indexRight);	
 		}
 	}
+	
 	private static void merge(int[] A, int indexLeft, int indexMiddle, int indexRight) {
 		int[] B = new int[indexRight - indexLeft + 1];
 		int i = indexLeft;
@@ -46,6 +49,13 @@ public class Sorting {
 		}
 	}
 
+	//==============================================================================================
+	
+	/**
+	 * This method performs a heapSort on an unsorted array. The algorithm runs in O(n*log(n)).
+	 * @param A - Unsorted array to be sorted
+	 */
+	
 	public static void heapSort(int[] A) {
 		int n = A.length - 1;
 		int i = n/2;
@@ -87,6 +97,14 @@ public class Sorting {
 		}
 	}
 	
+	//==============================================================================================
+	
+	/**
+	 * This method performs a quickSort on an unsorted array. The algorithm runs in O(n^2).
+	 * @param A - Unsorted array to be sorted.
+	 * @param l - Left border from where to start (usually 0)
+	 * @param r - Right border from where to start (usually array.length - 1)
+	 */
 	
 	public static void quickSort(int[] A, int l, int r) {
 		if (l < r) {
@@ -123,6 +141,7 @@ public class Sorting {
 		return i;
 	}
 	
-	
+	//==============================================================================================
+
 	
 }
