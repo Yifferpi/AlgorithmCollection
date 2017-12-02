@@ -8,28 +8,50 @@ import org.junit.Test;
 
 public class SortingTest {
 	
-	final int ARRAY_LENGTH = 10000000;
+	final int ARRAY_LENGTH = 100000;
+	final int SWICHES = ARRAY_LENGTH * 100;
 	
-	int[] input = new int[ARRAY_LENGTH];
-	int[] output = new int[ARRAY_LENGTH];
+	int[] input = createSortedArray(ARRAY_LENGTH);
+	int[] output = createSortedArray(ARRAY_LENGTH);
 	
 
 	
 	@Test
 	public void mergeSortTest() {
 		
-		createSortedArray(input);
-		createSortedArray(output);
-		shuffleArray(input, 100000000);
+		shuffleArray(input, SWICHES);
 		
 		Sorting.mergeSort(input, 0, input.length - 1);
 		assertTrue(Arrays.equals(output, input));
 	}
 	
-	public static void createSortedArray(int[] array) {
+	@Test
+	public void heapSortTest() {
+
+		shuffleArray(input, SWICHES);
+		
+		Sorting.heapSort(input);
+		assertTrue(Arrays.equals(output, input));
+	}
+	
+	@Test
+	public void quickSortTest() {
+
+		int[] input1 = {1, 3, 5, 4, 6, 2, 7, 9, 8};
+		int[] output1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		
+		Sorting.quickSort(input1, 0, input1.length - 1);
+		assertTrue(Arrays.equals(output1, input1));
+	}
+	
+	public static int[] createSortedArray(int size) {
+		int[] array = new int[size];
+		
 		for (int i = 0; i < array.length; i++) {
 			array[i] = i;
 		}
+		
+		return array;
 	}
 	
 	public static void shuffleArray(int[] array, int switches) {
