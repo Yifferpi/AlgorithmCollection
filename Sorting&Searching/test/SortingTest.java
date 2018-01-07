@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class SortingTest {
 	
-	final int ARRAY_LENGTH = 100000;
+	final int ARRAY_LENGTH = 10000;
 	final int SWICHES = ARRAY_LENGTH * 100;
 	
 	int[] input = createSortedArray(ARRAY_LENGTH);
@@ -18,31 +18,46 @@ public class SortingTest {
 	
 	@Test
 	public void mergeSortTest() {
-		
 		shuffleArray(input, SWICHES);
-		
 		Sorting.mergeSort(input, 0, input.length - 1);
 		assertTrue(Arrays.equals(output, input));
 	}
 	
 	@Test
 	public void heapSortTest() {
-
 		shuffleArray(input, SWICHES);
-		
 		Sorting.heapSort(input);
 		assertTrue(Arrays.equals(output, input));
 	}
 	
 	@Test
 	public void quickSortTest() {
-
-		int[] input1 = {1, 3, 5, 4, 6, 2, 7, 9, 8};
-		int[] output1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-		
-		Sorting.quickSort(input1, 0, input1.length - 1);
-		assertTrue(Arrays.equals(output1, input1));
+		shuffleArray(input, SWICHES);
+		Sorting.quickSort(input, 0, input.length - 1);
+		assertTrue(Arrays.equals(output, input));
 	}
+	
+	@Test
+	public void bubbleSortTest() {
+		shuffleArray(input, SWICHES);
+		Sorting.bubbleSort(input);
+		assertTrue(Arrays.equals(output, input));
+	}
+	
+	@Test
+	public void selectionSortTest() {
+		shuffleArray(input, SWICHES);
+		Sorting.selectionSort(input);
+		assertTrue(Arrays.equals(output, input));
+	}
+	
+	@Test
+	public void insertionSortTest() {
+		shuffleArray(input, SWICHES);
+		Sorting.insertionSort(input);
+		assertTrue(Arrays.equals(output, input));
+	}
+	//==============================================================================================
 	
 	public static int[] createSortedArray(int size) {
 		int[] array = new int[size];

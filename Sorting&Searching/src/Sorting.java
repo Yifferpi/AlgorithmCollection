@@ -89,9 +89,7 @@ public class Sorting {
 				break;
 			}
 			else {
-				int temp = A[i];
-				A[i] = A[j];
-				A[j] = temp;
+				exchange(A, i, j);
 			}
 			i = j;
 		}
@@ -116,7 +114,7 @@ public class Sorting {
 	
 	private static int partition(int[] A, int l, int r) {
 		int i = l;
-		int j = r - l;
+		int j = r - 1;
 		int p = A[r];
 		
 		do {
@@ -127,21 +125,77 @@ public class Sorting {
 				j--;
 			}
 			if (i < j) {
-				int temp = A[i];
-				A[i] = A[j];
-				A[j] = temp;
+				exchange(A, i, j);
 			}
 		} while (i < j);
-		
-		
-		int temp = A[i];
-		A[i] = A[r];
-		A[r] = temp;
+
+		exchange(A, i, r);
 		
 		return i;
+	}
+
+	//==============================================================================================
+
+	/**
+	 * This method performs a bubbleSort on an unsorted array. The algorithm runs in O(n^2).
+	 * @param A - Unsorted array to be sorted.
+	 */
+	
+	public static void bubbleSort(int[] A) {
+		for (int n = A.length - 1; n >= 0; n--) {
+			for (int i = 0; i <= n - 1; i++) {
+				if (A[i] > A[i + 1]) {
+					exchange(A, i, i + 1);
+				}
+			}
+		}
 	}
 	
 	//==============================================================================================
 
+	/**
+	 * This method performs a selectionSort on an unsorted array. The algorithm runs in O(n^2).
+	 * @param A - Unsorted array to be sorted.
+	 */
+	
+	public static void selectionSort(int[] A) {
+		for (int i = 0; i < A.length; i++) {
+			int min = i;
+			for (int j = i; j < A.length; j++) {
+				if (A[j] < A[min]) {
+					min = j;
+				}
+			}
+			exchange(A, min, i);
+		}		
+	}
+	
+	//==============================================================================================
+
+	/**
+	 * This method performs an insertionSort on an unsorted array. The algorithm runs in O(n^2).
+	 * @param A - Unsorted array to be sorted.
+	 */
+	
+	public static void insertionSort(int[] A) {
+		for (int i = 2; i < A.length; i++) {
+			int insert = A[i];
+			int j = i;
+			while (j > 0 && A[j-1] > insert) {
+				A[j] = A[j - 1];
+				j--;
+			}
+			A[j] = insert;
+		}
+	}
+	
+	//==============================================================================================
+	//private functions used in several algorithms:
+	
+	private static void exchange(int[] A, int i, int j) {
+		int temp = A[i];
+		A[i] = A[j];
+		A[j] = temp;
+	}
 	
 }
