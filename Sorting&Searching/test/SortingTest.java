@@ -2,13 +2,14 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Random;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 
 
 public class SortingTest {
 	
-	final int ARRAY_LENGTH = 10000;
+	final int ARRAY_LENGTH = 100000;
 	final int SWICHES = ARRAY_LENGTH * 100;
 	
 	int[] input = createSortedArray(ARRAY_LENGTH);
@@ -51,6 +52,7 @@ public class SortingTest {
 		assertTrue(Arrays.equals(output, input));
 	}
 	
+	@Ignore
 	@Test
 	public void insertionSortTest() {
 		shuffleArray(input, SWICHES);

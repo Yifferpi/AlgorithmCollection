@@ -5,6 +5,7 @@ public class Sorting {
 	
 	/**
 	 * This method performs a mergeSort on an unsorted array. The algorithm runs in O(n*log(n)).
+	 * (This Implementation of MergeSort runs on Indices alone..)
 	 * @param array - Unsorted array to be sorted
 	 * @param indexLeft - Left border from where to start (usually 0)
 	 * @param indexRight - Right border from where to start (usually array.length - 1)
