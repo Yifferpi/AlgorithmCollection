@@ -68,7 +68,7 @@ public class ShortestPaths {
 		}
 		dis[0] = 0;
 		
-		PriorityQueue<GNode> Q = new PriorityQueue<GNode>();
+		//PriorityQueue<GNode> Q = new PriorityQueue<GNode>();
 		
 		//TODO
 		
