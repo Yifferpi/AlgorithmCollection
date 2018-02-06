@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class SortingTest {
 	
-	final int ARRAY_LENGTH = 100000;
+	final int ARRAY_LENGTH = 1000000;
 	final int SWICHES = ARRAY_LENGTH * 100;
 	
 	int[] input = createSortedArray(ARRAY_LENGTH);
@@ -37,14 +37,14 @@ public class SortingTest {
 		Sorting.quickSort(input, 0, input.length - 1);
 		assertTrue(Arrays.equals(output, input));
 	}
-	
+	@Ignore
 	@Test
 	public void bubbleSortTest() {
 		shuffleArray(input, SWICHES);
 		Sorting.bubbleSort(input);
 		assertTrue(Arrays.equals(output, input));
 	}
-	
+	@Ignore
 	@Test
 	public void selectionSortTest() {
 		shuffleArray(input, SWICHES);

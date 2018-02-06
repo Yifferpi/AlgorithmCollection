@@ -19,7 +19,7 @@ public class Graph {
 	
 	
 	
-	
+	//Setting Functions
 	public void setRandomWeights(boolean x) {
 		settings.randomWeights = x;
 	}
@@ -36,6 +36,7 @@ public class Graph {
 		settings.directed = x;
 	}
 	
+	//Generate the Graph with the given Settings
 	public void generate() {
 
 		for (int i = 0; i < settings.amountOfVertices; i++) 
@@ -82,23 +83,30 @@ public class Graph {
 		}
 	}
 
+	//Functions for client after generation of the graph
 	
-	private void addVertex() {
-		vertices.add(new GNode(vertexID));
-		vertexID++;
-	}
+	
+
 	public GNode getVertex(int index) {
 		return vertices.get(index);
 	}
+	
+	
 	public ArrayList<GNode> getVertices() {
 		return vertices;
+	}
+	public  ArrayList<GEdge> getEdges() {
+		ArrayList<GEdge> edges = new ArrayList<GEdge>();
+		for (GNode v : vertices) {
+			edges.addAll(v.getEdges());
+		}
+		return edges;
 	}
 	
 	
 	public int numVertices() {
 		return vertices.size();
 	}
-
 	public int numEdges() {
 		int total = 0;
 		for (GNode x : vertices) {
@@ -118,6 +126,14 @@ public class Graph {
 				out.println("   " + e);
 			}
 		}
+	}
+	
+	
+	//Functions used by the Graph internally
+	
+	private void addVertex() {
+		vertices.add(new GNode(vertexID));
+		vertexID++;
 	}
 }
 

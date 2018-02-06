@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class GraphTest {
 
-	
+	@Ignore
 	@Test
 	public void testGraph() {
 		Graph g = new Graph();
@@ -18,7 +18,7 @@ public class GraphTest {
 		
 	}
 	
-	@Ignore
+	
 	@Test
 	public void testBFS() {
 		
@@ -26,6 +26,24 @@ public class GraphTest {
 		
 		g= new Graph();
 		g.setAmountOfVertices(6);
+		g.generate();
+		
+		g.print(System.out);
+		ShortestPaths.BFS(g, System.out);
+		
+	
+	}
+	
+	@Test
+	public void testBellmanFord() {
+		
+		Graph g;
+		
+		g= new Graph();
+		g.setAmountOfVertices(6);
+		g.setDirected(true);
+		g.setMaxEdgeWeight(5);
+		
 		g.generate();
 		
 		g.print(System.out);
