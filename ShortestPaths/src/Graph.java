@@ -10,7 +10,7 @@ public class Graph {
 	private ArrayList<GNode> vertices;
 	Settings settings;
 	
-	
+	//TODO implement acylic graph
 	
 	Graph () {
 		this.vertices = new ArrayList<GNode>();
@@ -65,7 +65,7 @@ public class Graph {
 								
 							} else {
 								
-								int weight = r.nextInt(settings.maxWeight);
+								int weight = r.nextInt(settings.maxWeight + 1) + 1;
 								
 								from.addEdge(possibleTo, weight);
 								if ( !settings.directed )
@@ -91,6 +91,13 @@ public class Graph {
 		return vertices.get(index);
 	}
 	
+	public ArrayList<ArrayList<GEdge>> getAdjList() {
+		ArrayList<ArrayList<GEdge>> adjList = new ArrayList<ArrayList<GEdge>>();
+		for (GNode v : vertices) {
+			adjList.add(v.getEdges());
+		}
+		return adjList;
+	}
 	
 	public ArrayList<GNode> getVertices() {
 		return vertices;

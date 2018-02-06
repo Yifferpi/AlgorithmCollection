@@ -18,9 +18,12 @@ public class GraphTest {
 		
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testBFS() {
+		System.out.println("=====================================");
+		System.out.println("BFS: ");
+		System.out.println("=====================================");
 		
 		Graph g;
 		
@@ -34,22 +37,46 @@ public class GraphTest {
 	
 	}
 	
+	@Ignore
 	@Test
-	public void testBellmanFord() {
+	public void testDijkstra() {
+		System.out.println("=====================================");
+		System.out.println("Dijkstra: ");
+		System.out.println("=====================================");
 		
 		Graph g;
-		
+		//new directed Graph with random positive weights
 		g= new Graph();
-		g.setAmountOfVertices(6);
+		g.setAmountOfVertices(4);
 		g.setDirected(true);
+		g.setRandomWeights(true);
 		g.setMaxEdgeWeight(5);
 		
 		g.generate();
-		
 		g.print(System.out);
-		ShortestPaths.BFS(g, System.out);
 		
+		ShortestPaths.Dijkstra(g, System.out);
+	}
 	
+	@Test
+	public void testBellmanFord() {
+		System.out.println("=====================================");
+		System.out.println("BellmanFord: ");
+		System.out.println("=====================================");
+		
+		Graph g;
+		//new directed Graph with random positive or negative weights
+		g= new Graph();
+		g.setAmountOfVertices(6);
+		g.setDirected(true);
+		g.setRandomWeights(true);
+		g.setNegativeWeights(true);
+		g.setMaxEdgeWeight(5);
+		
+		g.generate();
+		g.print(System.out);
+		
+		ShortestPaths.BellmanFord(g, System.out);
 	}
 
 }
