@@ -59,7 +59,7 @@ public class ShortestPaths {
 	
 	/**
 	 * This Algorithm is a One-To-All Shortest Path Algorithm that calculates the shortest paths from vertex 0 to all others
-	 * and prints it to the console. it requires non-negative edge weights. Random weight is okay.
+	 * and prints it to the console. It requires non-negative edge weights. Random edge weight is okay.
 	 * @param g - Graph on which the Algorithm should run.
 	 * @param out - PrintStream in which to print results.
 	 */
@@ -118,6 +118,13 @@ public class ShortestPaths {
 	
 	//======================================================================================================================
 
+	/**
+	 * This Algorithm is a One-To-All Shortest Path Algorithm that calculates the shortest paths from vertex 0 to all others
+	 * and prints it to the console. Random positive or negative edge weights are okay. If the Graph has a negative cycle, 
+	 * the Algorithm reports it.
+	 * @param g - Graph on which the Algorithm should run.
+	 * @param out - PrintStream in which to print results.
+	 */
 	
 	public static void BellmanFord(Graph g, PrintStream out) {
 		
@@ -138,16 +145,20 @@ public class ShortestPaths {
 		//Calculations
 		for (int i = 1; i < V.size(); i++) {
 			for (GEdge e : E) {
-				if (dp[i][e.getTo().getID()] > dp[i-1][e.getFrom().getID()] + e.getWeight()) {
-					dp[i][e.getTo().getID()] = dp[i-1][e.getFrom().getID()] + e.getWeight();
-					pre[e.getTo().getID()] = e.getFrom();
+				GNode u = e.getFrom();
+				GNode v = e.getTo();
+				if (dp[i][v.getID()] > dp[i-1][u.getID()] + e.getWeight()) {
+					dp[i][v.getID()] = dp[i-1][u.getID()] + e.getWeight();
+					pre[v.getID()] = u;
 				}
 			}
 		}
 		//check for negative Circles
 		boolean negativeCircles = false;
 		for (GEdge e : E) {
-			if (dp[V.size()-1][e.getTo().getID()] > dp[V.size()-1][e.getFrom().getID()] + e.getWeight()) {
+			GNode u = e.getFrom();
+			GNode v = e.getTo();
+			if ( dp[V.size()-1][v.getID()] > dp[V.size()-1][u.getID()] + e.getWeight() ) {
 				negativeCircles = true;
 			}
 		}

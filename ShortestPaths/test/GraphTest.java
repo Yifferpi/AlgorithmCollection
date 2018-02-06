@@ -37,7 +37,7 @@ public class GraphTest {
 	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void testDijkstra() {
 		System.out.println("=====================================");
@@ -47,17 +47,18 @@ public class GraphTest {
 		Graph g;
 		//new directed Graph with random positive weights
 		g= new Graph();
-		g.setAmountOfVertices(4);
+		g.setAmountOfVertices(100);
 		g.setDirected(true);
 		g.setRandomWeights(true);
 		g.setMaxEdgeWeight(5);
 		
 		g.generate();
-		g.print(System.out);
+		//g.print(System.out);
 		
 		ShortestPaths.Dijkstra(g, System.out);
 	}
 	
+	@Ignore
 	@Test
 	public void testBellmanFord() {
 		System.out.println("=====================================");
